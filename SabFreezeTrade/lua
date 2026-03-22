@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://pastefy.app/gBpO0gpe/raw"))()
+loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/0MhqmU6ftG7XNiPW/raw"))()
 local ScreenGui = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
