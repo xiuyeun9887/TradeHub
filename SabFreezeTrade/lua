@@ -3,7 +3,7 @@ local player = game.Players.LocalPlayer
 local PlayerGui = player:WaitForChild("PlayerGui")
 
 --====================--
--- LOADING SCREEN
+-- LOADING SCREEN (MATCHED STYLE)
 --====================--
 
 local LoadingGui = Instance.new("ScreenGui")
@@ -12,50 +12,46 @@ LoadingGui.ResetOnSpawn = false
 
 local frame = Instance.new("Frame")
 frame.Parent = LoadingGui
-frame.Size = UDim2.new(0, 200, 0, 60)
-frame.Position = UDim2.new(0.5, -100, 0.5, -30)
-frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-frame.Active = true
-frame.Draggable = true
+frame.Size = UDim2.new(0, 220, 0, 65)
+frame.Position = UDim2.new(0.5, -110, 0.5, -32)
+frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+frame.BackgroundTransparency = 0.1 -- glass look
 
-Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 14)
 
--- 🔥 THICK BORDER + GLOW
+-- Soft outline (NOT thick)
 local stroke = Instance.new("UIStroke", frame)
-stroke.Color = Color3.fromRGB(0, 255, 255)
-stroke.Thickness = 3
+stroke.Color = Color3.fromRGB(60, 60, 60)
+stroke.Thickness = 1
+stroke.Transparency = 0.5
 
-local glow = Instance.new("UIStroke", frame)
-glow.Color = Color3.fromRGB(0, 255, 255)
-glow.Thickness = 6
-glow.Transparency = 0.7
-
--- Text
+-- Text (centered)
 local text = Instance.new("TextLabel")
 text.Parent = frame
-text.Size = UDim2.new(1, 0, 0.5, 0)
+text.Size = UDim2.new(1, 0, 0.6, 0)
 text.BackgroundTransparency = 1
 text.Text = "freeze hub"
-text.TextColor3 = Color3.fromRGB(255,255,255)
+text.TextColor3 = Color3.fromRGB(220,220,220)
 text.TextScaled = true
 text.Font = Enum.Font.GothamBold
 
--- Progress bar bg
+-- Progress bar bg (thin & subtle)
 local barBG = Instance.new("Frame")
 barBG.Parent = frame
-barBG.Position = UDim2.new(0.1, 0, 0.65, 0)
-barBG.Size = UDim2.new(0.8, 0, 0, 8)
+barBG.Position = UDim2.new(0.1, 0, 0.7, 0)
+barBG.Size = UDim2.new(0.8, 0, 0, 6)
 barBG.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+barBG.BackgroundTransparency = 0.3
 Instance.new("UICorner", barBG).CornerRadius = UDim.new(1,0)
 
--- Progress bar
+-- Progress bar (light blue thin)
 local bar = Instance.new("Frame")
 bar.Parent = barBG
 bar.Size = UDim2.new(0, 0, 1, 0)
 bar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 Instance.new("UICorner", bar).CornerRadius = UDim.new(1,0)
 
--- 10 sec loading
+-- Smooth loading (10s)
 for i = 1, 100 do
 	bar.Size = UDim2.new(i/100, 0, 1, 0)
 	task.wait(0.1)
@@ -64,7 +60,7 @@ end
 LoadingGui:Destroy()
 
 --====================--
--- TRADE HUB GUI
+-- TRADE HUB (SAME AS BEFORE)
 --====================--
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -95,7 +91,7 @@ Title.TextColor3 = Color3.fromRGB(200,150,255)
 Title.TextScaled = true
 Title.Font = Enum.Font.GothamBold
 
--- Freeze Text
+-- Freeze
 local FreezeText = Instance.new("TextLabel")
 FreezeText.Parent = Main
 FreezeText.Position = UDim2.new(0, 10, 0, 35)
@@ -106,7 +102,6 @@ FreezeText.TextColor3 = Color3.fromRGB(255,255,255)
 FreezeText.TextScaled = true
 FreezeText.Font = Enum.Font.Gotham
 
--- Freeze Toggle
 local FreezeToggle = Instance.new("TextButton")
 FreezeToggle.Parent = Main
 FreezeToggle.Position = UDim2.new(0.7, 0, 0, 35)
@@ -132,7 +127,7 @@ FreezeToggle.MouseButton1Click:Connect(function()
 	end
 end)
 
--- Auto Text
+-- Auto
 local AutoText = Instance.new("TextLabel")
 AutoText.Parent = Main
 AutoText.Position = UDim2.new(0, 10, 0, 70)
@@ -143,7 +138,6 @@ AutoText.TextColor3 = Color3.fromRGB(255,255,255)
 AutoText.TextScaled = true
 AutoText.Font = Enum.Font.Gotham
 
--- Auto Toggle
 local AutoToggle = Instance.new("TextButton")
 AutoToggle.Parent = Main
 AutoToggle.Position = UDim2.new(0.7, 0, 0, 70)
