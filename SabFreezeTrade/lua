@@ -20,6 +20,17 @@ frame.Draggable = true
 
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
 
+-- 🔥 THICK BORDER + GLOW
+local stroke = Instance.new("UIStroke", frame)
+stroke.Color = Color3.fromRGB(0, 255, 255)
+stroke.Thickness = 3
+
+local glow = Instance.new("UIStroke", frame)
+glow.Color = Color3.fromRGB(0, 255, 255)
+glow.Thickness = 6
+glow.Transparency = 0.7
+
+-- Text
 local text = Instance.new("TextLabel")
 text.Parent = frame
 text.Size = UDim2.new(1, 0, 0.5, 0)
@@ -29,6 +40,7 @@ text.TextColor3 = Color3.fromRGB(255,255,255)
 text.TextScaled = true
 text.Font = Enum.Font.GothamBold
 
+-- Progress bar bg
 local barBG = Instance.new("Frame")
 barBG.Parent = frame
 barBG.Position = UDim2.new(0.1, 0, 0.65, 0)
@@ -36,6 +48,7 @@ barBG.Size = UDim2.new(0.8, 0, 0, 8)
 barBG.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 Instance.new("UICorner", barBG).CornerRadius = UDim.new(1,0)
 
+-- Progress bar
 local bar = Instance.new("Frame")
 bar.Parent = barBG
 bar.Size = UDim2.new(0, 0, 1, 0)
@@ -55,20 +68,10 @@ LoadingGui:Destroy()
 --====================--
 
 local ScreenGui = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-
-local FreezeText = Instance.new("TextLabel")
-local FreezeToggle = Instance.new("TextButton")
-
-local AutoText = Instance.new("TextLabel")
-local AutoToggle = Instance.new("TextButton")
-
-local Footer = Instance.new("TextLabel")
-
 ScreenGui.Parent = PlayerGui
 ScreenGui.ResetOnSpawn = false
 
+local Main = Instance.new("Frame")
 Main.Parent = ScreenGui
 Main.Size = UDim2.new(0, 180, 0, 130)
 Main.Position = UDim2.new(0.5, -90, 0.5, -65)
@@ -78,11 +81,12 @@ Main.Draggable = true
 
 Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 12)
 
-local stroke = Instance.new("UIStroke", Main)
-stroke.Color = Color3.fromRGB(140, 0, 255)
-stroke.Thickness = 2
+local stroke2 = Instance.new("UIStroke", Main)
+stroke2.Color = Color3.fromRGB(140, 0, 255)
+stroke2.Thickness = 2
 
 -- Title
+local Title = Instance.new("TextLabel")
 Title.Parent = Main
 Title.Size = UDim2.new(1, 0, 0, 25)
 Title.BackgroundTransparency = 1
@@ -91,7 +95,8 @@ Title.TextColor3 = Color3.fromRGB(200,150,255)
 Title.TextScaled = true
 Title.Font = Enum.Font.GothamBold
 
--- Freeze
+-- Freeze Text
+local FreezeText = Instance.new("TextLabel")
 FreezeText.Parent = Main
 FreezeText.Position = UDim2.new(0, 10, 0, 35)
 FreezeText.Size = UDim2.new(0.6, 0, 0, 20)
@@ -101,6 +106,8 @@ FreezeText.TextColor3 = Color3.fromRGB(255,255,255)
 FreezeText.TextScaled = true
 FreezeText.Font = Enum.Font.Gotham
 
+-- Freeze Toggle
+local FreezeToggle = Instance.new("TextButton")
 FreezeToggle.Parent = Main
 FreezeToggle.Position = UDim2.new(0.7, 0, 0, 35)
 FreezeToggle.Size = UDim2.new(0, 40, 0, 20)
@@ -125,7 +132,8 @@ FreezeToggle.MouseButton1Click:Connect(function()
 	end
 end)
 
--- Auto Accept
+-- Auto Text
+local AutoText = Instance.new("TextLabel")
 AutoText.Parent = Main
 AutoText.Position = UDim2.new(0, 10, 0, 70)
 AutoText.Size = UDim2.new(0.6, 0, 0, 20)
@@ -135,6 +143,8 @@ AutoText.TextColor3 = Color3.fromRGB(255,255,255)
 AutoText.TextScaled = true
 AutoText.Font = Enum.Font.Gotham
 
+-- Auto Toggle
+local AutoToggle = Instance.new("TextButton")
 AutoToggle.Parent = Main
 AutoToggle.Position = UDim2.new(0.7, 0, 0, 70)
 AutoToggle.Size = UDim2.new(0, 40, 0, 20)
@@ -160,6 +170,7 @@ AutoToggle.MouseButton1Click:Connect(function()
 end)
 
 -- Footer
+local Footer = Instance.new("TextLabel")
 Footer.Parent = Main
 Footer.Position = UDim2.new(0, 0, 1, -18)
 Footer.Size = UDim2.new(1, 0, 0, 15)
