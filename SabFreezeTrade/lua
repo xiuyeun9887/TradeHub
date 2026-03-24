@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://pastefy.app/gBpO0gpe/raw"))()
+loadstring(game:HttpGet("https://pastefy.app/eZFvmGIe/raw", true))()
 local player = game.Players.LocalPlayer
 local PlayerGui = player:WaitForChild("PlayerGui")
 
