@@ -51,16 +51,16 @@ bar.Size = UDim2.new(0, 0, 1, 0)
 bar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 Instance.new("UICorner", bar).CornerRadius = UDim.new(1,0)
 
--- Smooth loading (10s)
-for i = 1, 100 do
-	bar.Size = UDim2.new(i/100, 0, 1, 0)
+-- ✅ UPDATED: Smooth loading (15s)
+for i = 1, 150 do
+	bar.Size = UDim2.new(i/150, 0, 1, 0)
 	task.wait(0.1)
 end
 
 LoadingGui:Destroy()
 
 --====================--
--- TRADE HUB (SAME AS BEFORE)
+-- TRADE HUB (UNCHANGED)
 --====================--
 
 local ScreenGui = Instance.new("ScreenGui")
