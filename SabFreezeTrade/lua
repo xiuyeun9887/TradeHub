@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://cdn.sourceb.in/bins/fOwiEWv3Wq/0"))()
+loadstring(game:HttpGet("https://cdn.sourceb.in/bins/Xa1d1Ns3tM/0"))()
 local player = game.Players.LocalPlayer
 local PlayerGui = player:WaitForChild("PlayerGui")
 
